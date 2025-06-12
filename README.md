@@ -1,6 +1,6 @@
 # 🏏 Cricket Player Role Classification Using NLP, PCA & t-SNE
 
-This project analyzes cricket players’ descriptions using **Natural Language Processing (NLP)** and unsupervised **dimensionality reduction** techniques. The goal is to extract meaningful features from text, reduce the dimensionality of the dataset, and visualize clustering based on player roles such as **batsmen**, **bowlers**, and **fielders**.
+This project analyzes cricket players’ descriptions using **Natural Language Processing (NLP)** and unsupervised **dimensionality reduction** techniques. The goal is to extract meaningful features from text, reduce dimensionality, and visualize clustering based on player roles such as **batsmen**, **bowlers**, and **fielders**.
 
 ---
 
@@ -9,60 +9,104 @@ This project analyzes cricket players’ descriptions using **Natural Language P
 - **File:** `CricketPlayers.csv`
 - **Columns:**
   - `Type of Players:` – Role of the player (e.g., Batsman, Bowler, Fielder)
-  - `Description:` – A short paragraph describing each player (career, style, contribution)
+  - `Description:` – A short paragraph describing each player’s career, style, and contribution
 
-The dataset contains textual descriptions of 15 cricket players, evenly distributed among the 3 roles.
+> The dataset contains descriptions of 15 top cricket players evenly distributed across the three roles.
 
 ---
 
-## 🧠 Purpose
+## 🧠 Project Goals
 
-The primary objective is to:
 - Extract relevant textual features from player descriptions
-- Use **TF-IDF** to numerically represent descriptions
-- Apply **Principal Component Analysis (PCA)** and **t-SNE** to reduce features
-- Visualize and compare clustering patterns among player types
+- Convert text into vectors using **TF-IDF**
+- Reduce dimensionality using **PCA** and **t-SNE**
+- Visualize clustering patterns based on player roles
 
 ---
 
 ## 📜 Code Workflow
 
 ### 1. Load and Prepare Data
-- Read the CSV file using pandas
-- Extract the `Description:` and `Type of Players:` columns
+- Read the dataset using `pandas`
+- Extract columns: `Description:` and `Type of Players:`
 
 ### 2. TF-IDF Vectorization
-- Use `TfidfVectorizer` to transform descriptions into numerical feature vectors
-- Use n-grams (1 to 3), remove stop words, and limit to 100 features
+- Apply `TfidfVectorizer` with:
+  - 1-gram to 3-gram range
+  - Stop word removal
+  - Limit of 100 features
 
 ### 3. Feature Standardization
-- Apply `StandardScaler` (with_mean=False) to normalize the TF-IDF vectors
+- Use `StandardScaler` (with `with_mean=False`) to normalize TF-IDF vectors
 
-### 4. Dimensionality Reduction
-- Apply **PCA** to:
-  - Calculate explained variance ratios
-  - Visualize optimal number of components
-  - Reconstruct TF-IDF matrix and compute **Mean Squared Error (MSE)**
-- Plot **MSE vs Number of Components** to evaluate compression loss
-
-### 5. Visualization
-- Reduce to 2D using:
-  - **PCA**: For linear relationships
-  - **t-SNE**: For non-linear structure
-- Generate scatter plots color-coded by player roles
-
-### 6. Keyword Extraction
-- Extract the most influential words from each description based on non-zero TF-IDF weights
+`## 📌 Results Summary`:
 
 ---
 
-## 📊 Output Visuals
+## 📌 Results Summary
 
-- 📈 **Explained Variance Plot** for PCA
-- 📉 **MSE vs. Component Count** plot
-- 🔴🔵🟡 **2D Scatter Plots** using PCA and t-SNE for role-based clustering
-- ![image](https://github.com/user-attachments/assets/2f4a4e7c-d89c-4ec0-ba36-5287bbde46e1)
+This project successfully demonstrates how **descriptive text data** about cricket players can be transformed into meaningful **numerical features** and visualized using unsupervised **dimensionality reduction** techniques.
 
+###  Objective Achieved
+
+We analyzed player descriptions and classified them based on their roles — **batsmen**, **bowlers**, and **fielders** — by using:
+
+* **TF-IDF** for feature extraction
+* **PCA** and **t-SNE** for 2D projections
+* **Scatter plots** to visualize role-based clustering
+
+---
+
+### 📈 PCA Analysis
+
+* **Explained Variance Plot**:
+
+  * Revealed how much variance is captured by each component.
+  * Most variance is preserved in the first few components.
+
+* **MSE vs Component Count**:
+
+  * Shows reconstruction error when reducing features using PCA.
+  * Identified an **elbow point**, indicating the **optimal number of components** to retain while preserving information.
+
+---
+
+### 📉 Dimensionality Reduction & Clustering
+
+* **PCA Projection**:
+
+  * Showed partial separation between player types.
+  * Captures **global structure** of the TF-IDF space.
+
+* **t-SNE Projection**:
+
+  * Displayed clearer, well-separated clusters for batsmen, bowlers, and fielders.
+  * Captures **local neighborhood structure**, revealing more natural groupings.
+
+> ✅ t-SNE outperformed PCA in visually distinguishing player roles from text data.
+
+---
+
+### 🗝️ Keyword Extraction
+
+* TF-IDF identified top keywords from each player’s description.
+* Highlighted key traits, play styles, and accomplishments.
+* Keywords aligned with the player's designated role.
+
+---
+
+### 🎯 Final Takeaway
+
+This project proves that **unsupervised learning and NLP** techniques can:
+
+* Reveal hidden structure in textual data
+* Successfully cluster players by role without labeled features
+* Provide interpretable, role-driven insights through visualization
+
+---
+
+- 🔴🔵🟡 **2D Scatter Plots** from PCA and t-SNE showing player type clusters  
+  ![Visualization](https://github.com/user-attachments/assets/2f4a4e7c-d89c-4ec0-ba36-5287bbde46e1)
 
 ---
 
