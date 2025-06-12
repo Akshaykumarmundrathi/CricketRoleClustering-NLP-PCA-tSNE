@@ -66,9 +66,9 @@ The primary objective is to:
 
 ## 📁 Project Structure
 
--  CricketPlayers.csv ## Dataset
--  cricket_role_clustering.py # Python script containing all logic
--  README.md ## This file
+-  CricketPlayers.csv  **Dataset**
+-  cricket_role_clustering.py  **Python script** containing all logic
+-  README.md   **This file**
 
 
 ---
