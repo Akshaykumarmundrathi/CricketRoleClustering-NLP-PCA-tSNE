@@ -1,9 +1,3 @@
-# CricketRoleClustering-NLP-PCA-tSNE
-A project that uses TF-IDF, PCA, and t-SNE to extract, reduce, and visualize features from cricket players' textual descriptions to classify them into roles like batsmen, bowlers, and fielders.
-
----
-
-````markdown
 # 🏏 Cricket Player Role Classification Using NLP, PCA & t-SNE
 
 This project analyzes cricket players’ descriptions using **Natural Language Processing (NLP)** and unsupervised **dimensionality reduction** techniques. The goal is to extract meaningful features from text, reduce the dimensionality of the dataset, and visualize clustering based on player roles such as **batsmen**, **bowlers**, and **fielders**.
@@ -31,89 +25,56 @@ The primary objective is to:
 
 ---
 
-## 📜 Code Structure
+## 📜 Code Workflow
 
-```python
-1. Load Dataset
-   - Read the CSV file using pandas.
-   - Extract 'Description' and 'Type of Players' columns.
+### 1. Load and Prepare Data
+- Read the CSV file using pandas
+- Extract the `Description:` and `Type of Players:` columns
 
-2. Text Vectorization with TF-IDF
-   - Use TfidfVectorizer to extract n-gram features from descriptions.
-   - Limit to 100 features with filtering based on term frequency.
+### 2. TF-IDF Vectorization
+- Use `TfidfVectorizer` to transform descriptions into numerical feature vectors
+- Use n-grams (1 to 3), remove stop words, and limit to 100 features
 
-3. Feature Standardization
-   - StandardScaler (with_mean=False) is used to standardize TF-IDF vectors.
+### 3. Feature Standardization
+- Apply `StandardScaler` (with_mean=False) to normalize the TF-IDF vectors
 
-4. Dimensionality Reduction with PCA
-   - Apply PCA to calculate explained variance.
-   - Select optimal number of components (k = 9).
-   - Reconstruct the TF-IDF matrix and compute Mean Squared Error (MSE).
+### 4. Dimensionality Reduction
+- Apply **PCA** to:
+  - Calculate explained variance ratios
+  - Visualize optimal number of components
+  - Reconstruct TF-IDF matrix and compute **Mean Squared Error (MSE)**
+- Plot **MSE vs Number of Components** to evaluate compression loss
 
-5. MSE vs Component Count
-   - Plot reconstruction loss to justify the number of components retained.
+### 5. Visualization
+- Reduce to 2D using:
+  - **PCA**: For linear relationships
+  - **t-SNE**: For non-linear structure
+- Generate scatter plots color-coded by player roles
 
-6. PCA and t-SNE Visualization
-   - Reduce to 2 components using both PCA and t-SNE.
-   - Plot 2D scatter plots color-coded by player type.
-
-7. Feature Extraction Insight
-   - Extract keywords used for each player based on non-zero TF-IDF scores.
-````
-
----
-
-## 📊 Visual Outputs
-
-* **Explained Variance Plot (PCA):** Shows how much variance is retained as more components are added.
-* **MSE Plot:** Shows reconstruction error for each k from 1 to 13.
-* **2D Scatter Plots:**
-
-  * PCA Projection (Linear)
-  * t-SNE Projection (Non-linear)
-  * Both show clear grouping of players by role.
+### 6. Keyword Extraction
+- Extract the most influential words from each description based on non-zero TF-IDF weights
 
 ---
 
-## 🔧 Requirements
+## 📊 Output Visuals
 
-* Python 3.7+
-* Libraries:
+- 📈 **Explained Variance Plot** for PCA
+- 📉 **MSE vs. Component Count** plot
+- 🔴🔵🟡 **2D Scatter Plots** using PCA and t-SNE for role-based clustering
 
-  * pandas
-  * scikit-learn
-  * matplotlib
-  * seaborn (optional for improved plotting)
+---
 
-Install dependencies with:
+## 📁 Project Structure
+
+├── CricketPlayers.csv # Dataset
+├── cricket_role_clustering.py # Python script containing all logic
+├── README.md # This file
+
+
+---
+
+## ⚙️ Requirements
 
 ```bash
 pip install pandas scikit-learn matplotlib
-```
-
----
-
-## 📌 Conclusion
-
-This project demonstrates how **NLP and unsupervised learning techniques** like **PCA** and **t-SNE** can uncover structure and patterns in text data. It can be extended to larger datasets, different player categories, or adapted for other domains such as movie reviews, product descriptions, etc.
-
----
-
-## 📁 Folder Structure
-
-```
-├── CricketPlayers.csv         # Dataset file
-├── cricket_role_clustering.py # Main code script
-├── README.md                  # Project documentation
-```
-
----
-
-## 🙌 Acknowledgements
-
-This project is built as an academic or learning exercise to explore the power of dimensionality reduction and textual feature extraction.
-
-```
-
-Let me know if you'd like this converted to a `.ipynb` version or want GitHub badges or screenshots added!
 ```
