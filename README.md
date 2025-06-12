@@ -61,6 +61,8 @@ The primary objective is to:
 - 📈 **Explained Variance Plot** for PCA
 - 📉 **MSE vs. Component Count** plot
 - 🔴🔵🟡 **2D Scatter Plots** using PCA and t-SNE for role-based clustering
+- ![image](https://github.com/user-attachments/assets/2f4a4e7c-d89c-4ec0-ba36-5287bbde46e1)
+
 
 ---
 
