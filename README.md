@@ -39,7 +39,6 @@ This project analyzes cricket players’ descriptions using **Natural Language P
 ### 3. Feature Standardization
 - Use `StandardScaler` (with `with_mean=False`) to normalize TF-IDF vectors
 
-`## 📌 Results Summary`:
 
 ---
 
